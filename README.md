@@ -8,7 +8,7 @@ Requires ProcessWire v3 and AdminThemeUikit.
 
 This module allows you to create layouts in Page Edit that would not be possible without it. It's useful when you want a layout that has two or more fields as rows that are themselves within a row in Page Edit.
 
-It would also be useful when you have some fields that you want to add to a template as a group (i.e. via FieldsetGroup or FieldsetPage) but having a heading and visible wrapper for the fieldset in Page Edit would be redundant.
+It's also useful when you have some fields that you want to add to a template as a group (i.e. via FieldsetGroup or FieldsetPage) but having a heading and visible wrapper for the fieldset in Page Edit would be redundant.
 
 Example:
 
