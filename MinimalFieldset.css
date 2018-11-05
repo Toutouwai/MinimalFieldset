@@ -1,0 +1,10 @@
+/* Fieldset and FieldsetGroup */
+.Inputfield.MinimalFieldset { display:flex; }
+.MinimalFieldset > label { display:none !important; }
+.MinimalFieldset > .InputfieldContent { padding:0 !important; flex:1; flex-direction:column; }
+.MinimalFieldset > .InputfieldContent > .Inputfields { display:flex; flex:1; height:100%; }
+
+/* FieldsetPage */
+.MinimalFieldset.InputfieldRepeater > .InputfieldContent > .Inputfields > .InputfieldRepeaterItem { margin:0 !important; display:flex; }
+.MinimalFieldset.InputfieldRepeater > .InputfieldContent > .Inputfields > .InputfieldRepeaterItem > .InputfieldContent { padding:0 !important; flex:1; flex-direction:column; }
+.MinimalFieldset.InputfieldRepeater > .InputfieldContent > .Inputfields > .InputfieldRepeaterItem > .InputfieldContent .Inputfields { display:flex; flex:1; height:100%; }
