@@ -23,3 +23,5 @@ Example:
 ## Usage
 
 In the field settings for any Fieldset/FieldsetGroup/FieldsetPage, tick the "Remove label and padding for this fieldset" checkbox.
+
+You can optionally disable the distribution of vertical space within the fieldset if you like.
