@@ -22,7 +22,7 @@ class MinimalFieldset extends WireData implements Module {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Minimal Fieldset',
-			'version' => '0.1.2',
+			'version' => '0.1.3',
 			'summary' => 'Adds a config option to fieldsets to render them without label or padding in Page Edit. Requires AdminThemeUikit.',
 			'author' => 'Robin Sallis',
 			'icon' => 'square-o',
@@ -49,6 +49,8 @@ class MinimalFieldset extends WireData implements Module {
 		$field = $event->arguments(0);
 		$wrapper = $event->return;
 
+		// Not for FieldsetClose
+		if($field->type == 'FieldtypeFieldsetClose') return;
 		// Not for FieldsetTab
 		if($field->type == 'FieldtypeFieldsetTabOpen') return;
 
