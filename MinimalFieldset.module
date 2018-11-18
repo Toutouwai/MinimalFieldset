@@ -22,8 +22,8 @@ class MinimalFieldset extends WireData implements Module {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Minimal Fieldset',
-			'version' => '0.1.1',
-			'summary' => 'Adds a config option to fieldsets to render them without label or padding in Page Edit.',
+			'version' => '0.1.2',
+			'summary' => 'Adds a config option to fieldsets to render them without label or padding in Page Edit. Requires AdminThemeUikit.',
 			'author' => 'Robin Sallis',
 			'icon' => 'square-o',
 			'autoload' => 'template=admin',
@@ -51,6 +51,13 @@ class MinimalFieldset extends WireData implements Module {
 
 		// Not for FieldsetTab
 		if($field->type == 'FieldtypeFieldsetTabOpen') return;
+
+		// Show warning if AdminThemeUikit not in use
+		$admin_theme = $this->user->admin_theme ?: $this->config->defaultAdminTheme;
+		if($admin_theme !== 'AdminThemeUikit') {
+			$this->warning($this->_('Minimal Fieldset cannot be used because it requires AdminThemeUikit.'));
+			return;
+		}
 
 		// Add activation checkbox
 		/* @var InputfieldCheckbox $f */
@@ -86,6 +93,10 @@ class MinimalFieldset extends WireData implements Module {
 		$field = $event->object;
 		$inputfield = $event->return;
 
+		// Only for AdminThemeUikit
+		$admin_theme = $this->user->admin_theme ?: $this->config->defaultAdminTheme;
+		if($admin_theme !== 'AdminThemeUikit') return;
+
 		// In the case of FieldsetGroup, only for the normal fieldset type
 		if($field->useTabs && $field->useTabs !== 0) return;
 		// Only if minimal option is selected
@@ -100,6 +111,17 @@ class MinimalFieldset extends WireData implements Module {
 		$info = $this->getModuleInfo();
 		$version = $info['version'];
 		$config->styles->add($config->urls->$this . "{$this}.css?v=$version");
+	}
+
+	/**
+	 * Install
+	 */
+	public function ___install() {
+		// Show warning if AdminThemeUikit not in use
+		$admin_theme = $this->user->admin_theme ?: $this->config->defaultAdminTheme;
+		if($admin_theme !== 'AdminThemeUikit') {
+			$this->warning($this->_('Minimal Fieldset cannot be used because it requires AdminThemeUikit.'));
+		}
 	}
 
 }
