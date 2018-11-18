@@ -22,7 +22,7 @@ class MinimalFieldset extends WireData implements Module {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'Minimal Fieldset',
-			'version' => '0.1.0',
+			'version' => '0.1.1',
 			'summary' => 'Adds a config option to fieldsets to render them without label or padding in Page Edit.',
 			'author' => 'Robin Sallis',
 			'icon' => 'square-o',
@@ -52,7 +52,7 @@ class MinimalFieldset extends WireData implements Module {
 		// Not for FieldsetTab
 		if($field->type == 'FieldtypeFieldsetTabOpen') return;
 
-		// Add checkbox
+		// Add activation checkbox
 		/* @var InputfieldCheckbox $f */
 		$f = $this->wire()->modules->get('InputfieldCheckbox');
 		$f_name = 'minimal';
@@ -63,6 +63,17 @@ class MinimalFieldset extends WireData implements Module {
 		if($field->useTabs !== null) {
 			$f->showIf = 'useTabs=0';
 		}
+		$f->columnWidth = 50;
+		$wrapper->add($f);
+
+		// Add no spacing checkbox
+		$f = $this->wire()->modules->get('InputfieldCheckbox');
+		$f_name = 'no_spacing';
+		$f->name = $f_name;
+		$f->label = $this->_('Do not distribute vertical space within fieldset');
+		$f->attr('checked', $field->$f_name === 1 ? 'checked' : '');
+		$f->showIf = 'minimal=1';
+		$f->columnWidth = 50;
 		$wrapper->add($f);
 	}
 
@@ -80,8 +91,10 @@ class MinimalFieldset extends WireData implements Module {
 		// Only if minimal option is selected
 		if(!$field->minimal) return;
 
-		// Add class to inputfield
+		// Add classes to inputfield
 		$inputfield->wrapClass('MinimalFieldset');
+		if(!$field->no_spacing) $inputfield->wrapClass('MinimalFieldsetSpaced');
+
 		// Load stylesheet
 		$config = $this->wire()->config;
 		$info = $this->getModuleInfo();
