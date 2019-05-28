@@ -8,6 +8,8 @@
 /* FieldsetPage */
 .MinimalFieldset.InputfieldRepeater > .InputfieldContent > .Inputfields > .InputfieldRepeaterItem { margin:0 !important; }
 .MinimalFieldset.InputfieldRepeater > .InputfieldContent > .Inputfields > .InputfieldRepeaterItem > .InputfieldContent { padding:0 !important; }
+/* Hide error messages in FieldsetPage container (they are repeated in the relevant child inputfield anyway) */
+.MinimalFieldset.InputfieldRepeater > .InputfieldContent > .InputfieldError { display:none; }
 
 
 /* MinimalFieldsetSpaced: distribute vertical space */
