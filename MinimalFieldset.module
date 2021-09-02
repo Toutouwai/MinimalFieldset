@@ -9,7 +9,7 @@ class MinimalFieldset extends WireData implements Module {
 		return array(
 			'title' => 'Minimal Fieldset',
 			'summary' => 'Adds a config option to fieldsets to render them without label or padding in Page Edit. Requires AdminThemeUikit.',
-			'version' => '0.1.7',
+			'version' => '0.1.6',
 			'author' => 'Robin Sallis',
 			'href' => 'https://github.com/Toutouwai/MinimalFieldset',
 			'icon' => 'square-o',
