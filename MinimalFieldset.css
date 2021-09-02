@@ -4,6 +4,8 @@
 
 .MinimalFieldset > label { display:none !important; }
 .MinimalFieldset > .InputfieldContent { padding:0 !important; }
+.MinimalFieldset > .InputfieldContent > .description { display:none; }
+.MinimalFieldset > .InputfieldContent > .notes { display:none; }
 
 /* FieldsetPage */
 .MinimalFieldset.InputfieldRepeater > .InputfieldContent > .Inputfields > .InputfieldRepeaterItem { margin:0 !important; }
