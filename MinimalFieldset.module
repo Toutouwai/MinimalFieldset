@@ -9,7 +9,7 @@ class MinimalFieldset extends WireData implements Module {
 		return array(
 			'title' => 'Minimal Fieldset',
 			'summary' => 'Adds a config option to fieldsets to render them without label or padding in Page Edit. Requires AdminThemeUikit.',
-			'version' => '0.1.7',
+			'version' => '0.1.8',
 			'author' => 'Robin Sallis',
 			'href' => 'https://github.com/Toutouwai/MinimalFieldset',
 			'icon' => 'square-o',
@@ -121,8 +121,8 @@ class MinimalFieldset extends WireData implements Module {
 		if(!$field->minimal) return;
 
 		// Add classes to inputfield
-		$inputfield->wrapClass .= ' MinimalFieldset';
-		if(!$field->no_spacing) $inputfield->wrapClass .= ' MinimalFieldsetSpaced';
+		$inputfield->addClass('MinimalFieldset', 'wrapClass');
+		if(!$field->no_spacing) $inputfield->addClass('MinimalFieldsetSpaced', 'wrapClass');
 	}
 
 	/**
